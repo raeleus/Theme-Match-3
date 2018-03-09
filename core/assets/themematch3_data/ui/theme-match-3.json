@@ -1,0 +1,361 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	font: {
+		file: font-export.fnt
+	}
+	level: {
+		file: font-level-export.fnt
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	black: {
+		r: 0
+		g: 0
+		b: 0
+		a: 1
+	}
+	blue: {
+		r: 0
+		g: 0
+		b: 1
+		a: 1
+	}
+	brown: {
+		r: 0.40666667
+		g: 0.14599332
+		b: 0
+		a: 1
+	}
+	clear: {
+		r: 1
+		g: 1
+		b: 1
+		a: 0
+	}
+	cyan: {
+		r: 0
+		g: 1
+		b: 1
+		a: 1
+	}
+	dark-gray: {
+		r: 0.19666667
+		g: 0.19666667
+		b: 0.19666667
+		a: 1
+	}
+	disabled: {
+		r: 0.28
+		g: 0.28
+		b: 0.28
+		a: 1
+	}
+	disabled-text: {
+		r: 0.50666666
+		g: 0.50666666
+		b: 0.50666666
+		a: 1
+	}
+	gold: {
+		r: 0.80333334
+		g: 0.5416585
+		b: 0.11782223
+		a: 1
+	}
+	gray: {
+		r: 0.57666665
+		g: 0.57666665
+		b: 0.57666665
+		a: 1
+	}
+	green: {
+		r: 0
+		g: 1
+		b: 0
+		a: 1
+	}
+	magenta: {
+		r: 1
+		g: 0
+		b: 1
+		a: 1
+	}
+	orange: {
+		r: 1
+		g: 0.5019608
+		b: 0
+		a: 1
+	}
+	pink: {
+		r: 1
+		g: 0.62666667
+		b: 0.632889
+		a: 1
+	}
+	purple: {
+		r: 0.5019608
+		g: 0
+		b: 1
+		a: 1
+	}
+	red: {
+		r: 1
+		g: 0
+		b: 0
+		a: 1
+	}
+	white: {
+		r: 1
+		g: 1
+		b: 1
+		a: 1
+	}
+	yellow: {
+		r: 1
+		g: 1
+		b: 0
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	clear: {
+		name: white
+		color: clear
+	}
+	blue: {
+		name: white
+		color: blue
+	}
+	brown: {
+		name: white
+		color: brown
+	}
+	cyan: {
+		name: white
+		color: cyan
+	}
+	dark-gray: {
+		name: white
+		color: dark-gray
+	}
+	gold: {
+		name: white
+		color: gold
+	}
+	gray: {
+		name: white
+		color: gray
+	}
+	green: {
+		name: white
+		color: green
+	}
+	magenta: {
+		name: white
+		color: magenta
+	}
+	orange: {
+		name: white
+		color: orange
+	}
+	pink: {
+		name: white
+		color: pink
+	}
+	purple: {
+		name: white
+		color: purple
+	}
+	red: {
+		name: white
+		color: red
+	}
+	yellow: {
+		name: white
+		color: yellow
+	}
+	button-disabled: {
+		name: button
+		color: disabled
+	}
+	black: {
+		name: white
+		color: black
+	}
+}
+com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable: {
+	progress-bar-knob-tiled: {
+		region: progress-bar-knob
+		color: white
+		minWidth: 0
+		minHeight: 12
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
+	default: {
+		imageUp: choose-an-image
+		up: image-button
+		down: image-button-pressed
+		over: image-button-over
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: {
+		font: font
+	}
+	level: {
+		font: level
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
+	default-horizontal: {
+		background: progress-bar
+		knobBefore: progress-bar-knob-tiled
+	}
+	default-vertical: {
+		background: progress-bar
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+	default: {
+		hScrollKnob: scroll
+		vScrollKnob: scroll
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: {
+		font: font
+		fontColor: white
+		downFontColor: gray
+		disabledFontColor: disabled-text
+		up: button
+		down: button-pressed
+		over: button-over
+		disabled: button-disabled
+	}
+	blue: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: blue
+		up: blue
+		over: white
+	}
+	brown: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: brown
+		up: brown
+		over: white
+	}
+	cyan: {
+		font: font
+		fontColor: black
+		downFontColor: white
+		overFontColor: cyan
+		up: cyan
+		over: black
+	}
+	dark-gray: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: dark-gray
+		up: dark-gray
+		over: white
+	}
+	gold: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: gold
+		up: gold
+		over: white
+	}
+	gray: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: gray
+		up: gray
+		over: white
+	}
+	green: {
+		font: font
+		fontColor: black
+		downFontColor: white
+		overFontColor: green
+		up: green
+		over: black
+	}
+	magenta: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: magenta
+		up: magenta
+		over: white
+	}
+	orange: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: orange
+		up: orange
+		over: white
+	}
+	pink: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: pink
+		up: pink
+		over: white
+	}
+	purple: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: purple
+		up: purple
+		over: white
+	}
+	red: {
+		font: font
+		fontColor: white
+		downFontColor: black
+		overFontColor: red
+		up: red
+		over: white
+	}
+	white: {
+		font: font
+		fontColor: black
+		downFontColor: white
+		overFontColor: white
+		up: white
+		over: black
+	}
+	yellow: {
+		font: font
+		fontColor: black
+		downFontColor: white
+		overFontColor: yellow
+		up: yellow
+		over: black
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+	default: {
+		background: window
+		titleFont: font
+		stageBackground: black
+	}
+}
+}

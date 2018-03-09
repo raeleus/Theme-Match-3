@@ -1,0 +1,125 @@
+
+theme-match-3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+button
+  rotate: false
+  xy: 364, 72
+  size: 109, 67
+  split: 7, 7, 7, 7
+  pad: 7, 7, 4, 3
+  orig: 109, 67
+  offset: 0, 0
+  index: -1
+button-over
+  rotate: false
+  xy: 364, 3
+  size: 109, 67
+  split: 7, 7, 7, 7
+  pad: 7, 7, 4, 3
+  orig: 109, 67
+  offset: 0, 0
+  index: -1
+button-pressed
+  rotate: false
+  xy: 475, 72
+  size: 109, 67
+  split: 7, 7, 7, 7
+  pad: 7, 7, 4, 3
+  orig: 109, 67
+  offset: 0, 0
+  index: -1
+choose-an-image
+  rotate: false
+  xy: 475, 1
+  size: 67, 69
+  orig: 67, 69
+  offset: 0, 0
+  index: -1
+font-export
+  rotate: false
+  xy: 613, 712
+  size: 274, 278
+  orig: 274, 278
+  offset: 0, 0
+  index: -1
+font-level-export
+  rotate: false
+  xy: 1, 141
+  size: 565, 576
+  orig: 565, 576
+  offset: 0, 0
+  index: -1
+image-button
+  rotate: false
+  xy: 1, 20
+  size: 119, 119
+  split: 15, 15, 15, 15
+  pad: 5, 5, 5, 5
+  orig: 119, 119
+  offset: 0, 0
+  index: -1
+image-button-over
+  rotate: false
+  xy: 122, 20
+  size: 119, 119
+  split: 15, 15, 15, 15
+  pad: 5, 5, 5, 5
+  orig: 119, 119
+  offset: 0, 0
+  index: -1
+image-button-pressed
+  rotate: false
+  xy: 243, 20
+  size: 119, 119
+  split: 15, 15, 15, 15
+  pad: 5, 5, 5, 5
+  orig: 119, 119
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1, 719
+  size: 610, 271
+  orig: 610, 271
+  offset: 0, 0
+  index: -1
+progress-bar
+  rotate: false
+  xy: 1, 1006
+  size: 700, 12
+  orig: 700, 12
+  offset: 0, 0
+  index: -1
+progress-bar-knob
+  rotate: false
+  xy: 1, 992
+  size: 700, 12
+  orig: 700, 12
+  offset: 0, 0
+  index: -1
+scroll
+  rotate: false
+  xy: 703, 1000
+  size: 18, 18
+  split: 1, 1, 1, 1
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 1, 17
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 544, 14
+  size: 56, 56
+  split: 5, 5, 5, 5
+  orig: 56, 56
+  offset: 0, 0
+  index: -1

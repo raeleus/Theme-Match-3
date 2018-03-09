@@ -1,0 +1,1 @@
+{"skeleton":{"hash":"WgKtGAEcDFyA05HzHefjntd6Gfg","spine":"3.7.13-beta","width":64,"height":64,"images":"../output/","audio":""},"bones":[{"name":"root"}],"slots":[{"name":"grid-reference","bone":"root"}],"skins":{"default":{}},"animations":{"animation":{}}}
