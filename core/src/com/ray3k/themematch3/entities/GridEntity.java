@@ -96,7 +96,7 @@ public class GridEntity extends Entity {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         if (selectedContainer == null) {
-                            if (container.getActor() != null) {
+                            if (container.getUserObject() != null) {
                                 selectedContainer = container;
                                 SpineDrawableTemplate template = new SpineDrawableTemplate();
                                 template.minWidth = 64;
@@ -155,6 +155,7 @@ public class GridEntity extends Entity {
             table.row();
         }
         
+        root.pack();
         initialSpawn(15);
     }
     
@@ -215,16 +216,14 @@ public class GridEntity extends Entity {
     }
     
     private void swap(final Container start, final Container destination) {
-        Actor actor = start.getActor();
+        Actor actor = (Actor) start.getUserObject();
         Actor other = null;
         if (destination != null) {
-            other = destination.getActor();
+            other = (Actor) destination.getUserObject();
         }
         
         if (actor != null) {
             GameState.inst().playSound("swap");
-            
-            final Table table = (Table)GameState.spineStage.getRoot().findActor("gridTable");
             
             temp.set(start.getPadLeft(), start.getPadBottom());
             start.localToStageCoordinates(temp);
@@ -232,18 +231,16 @@ public class GridEntity extends Entity {
             float startY = temp.y;
             
             
-            start.setActor(destination.getActor());
-            destination.setActor(actor);
-            table.pack();
+            start.setUserObject(other);
+            destination.setUserObject(actor);
             
             temp.set(destination.getPadLeft(), destination.getPadBottom());
             destination.localToStageCoordinates(temp);
             float endX = temp.x;
             float endY = temp.y;
             
-            actor.setPosition(startX - endX + start.getPadLeft(), startY - endY + start.getPadBottom());
             actor.clearActions();
-            actor.addAction(Actions.sequence(Actions.moveTo(destination.getPadLeft(), destination.getPadBottom(), .15f, Interpolation.smooth), new Action() {
+            actor.addAction(Actions.sequence(Actions.moveTo(endX, endY, .15f, Interpolation.smooth), new Action() {
                 @Override
                 public boolean act(float delta) {
                     checkForMatch();
@@ -253,9 +250,8 @@ public class GridEntity extends Entity {
             }));
             
             if (other != null) {
-                other.setPosition(endX - startX + start.getPadLeft(), endY - startY + start.getPadBottom());
                 other.clearActions();
-                other.addAction(Actions.moveTo(start.getPadLeft(), start.getPadBottom(), .15f, Interpolation.smooth));
+                other.addAction(Actions.moveTo(startX, startY, .15f, Interpolation.smooth));
             }
             
             updateWarningContainers();
@@ -272,7 +268,7 @@ public class GridEntity extends Entity {
         
         for (int i = columnIndex % COLUMNS; i < table.getCells().size; i += COLUMNS) {
             Container container = (Container) table.getCells().get(i).getActor();
-            if (container.getActor() == null) {
+            if (container.getUserObject() == null) {
                 returnValue = container;
             } else {
                 break;
@@ -353,11 +349,15 @@ public class GridEntity extends Entity {
             spineDrawable.getSkeleton().setSkin(color);
             Image image = new Image(spineDrawable);
             image.setUserObject(name + color);
-            container.setActor(image);
-            Table table = (Table) GameState.spineStage.getRoot().findActor("gridTable");
-            table.pack();
-            image.setPosition(container.getPadLeft(), container.getPadBottom() + GameState.GAME_HEIGHT);
-            image.addAction(Actions.sequence(Actions.moveTo(container.getPadLeft(), container.getPadBottom(), 1.0f, Interpolation.bounceOut), new Action() {
+            image.setTouchable(Touchable.disabled);
+            
+            container.setUserObject(image);
+            GameState.spineStage.addActor(image);
+            
+            temp.set(container.getPadLeft(), container.getPadBottom());
+            container.localToStageCoordinates(temp);
+            image.setPosition(temp.x, temp.y + GameState.GAME_HEIGHT);
+            image.addAction(Actions.sequence(Actions.moveTo(temp.x, temp.y, 1.0f, Interpolation.bounceOut), Actions.delay(.25f), new Action() {
                 @Override
                 public boolean act(float delta) {
                     checkForMatch();
@@ -391,14 +391,14 @@ public class GridEntity extends Entity {
             
             Container container = (Container) table.getCells().get(i).getActor();
             
-            if (matchingContainers.size == 0 || container.getActor() == null || !container.getActor().getUserObject().equals(matchingContainers.first().getActor().getUserObject())) {
+            if (matchingContainers.size == 0 || container.getUserObject() == null || !((Image)container.getUserObject()).getUserObject().equals(((Image)matchingContainers.first().getUserObject()).getUserObject())) {
                 if (matchingContainers.size >= 3) {
                     totalMatchingContainers.addAll(matchingContainers);
                 }
                 matchingContainers.clear();
             }
             
-            if (container.getActor() != null) {
+            if (container.getUserObject() != null) {
                 matchingContainers.add(container);
             }
         }
@@ -414,14 +414,14 @@ public class GridEntity extends Entity {
                 
                 Container container = (Container) table.getCells().get(i).getActor();
 
-                if (matchingContainers.size == 0 || container.getActor() == null || !container.getActor().getUserObject().equals(matchingContainers.first().getActor().getUserObject())) {
+                if (matchingContainers.size == 0 || container.getUserObject() == null || !((Image) container.getUserObject()).getUserObject().equals(((Image)matchingContainers.first().getUserObject()).getUserObject())) {
                     if (matchingContainers.size >= 3) {
                         totalMatchingContainers.addAll(matchingContainers);
                     }
                     matchingContainers.clear();
                 }
 
-                if (container.getActor() != null) {
+                if (container.getUserObject() != null) {
                     matchingContainers.add(container);
                 }
             }
@@ -483,16 +483,14 @@ public class GridEntity extends Entity {
     }
     
     private void remove(final Container container) {
-        Actor actor = container.getActor();
+        Actor actor = (Actor) container.getUserObject();
         if (actor != null) {
             temp.set(container.getPadLeft(), container.getPadRight());
             container.localToStageCoordinates(temp);
             final float tempX = temp.x;
             final float tempY = temp.y;
 
-            GameState.spineStage.addActor(actor);
-            actor.setPosition(tempX, tempY);
-
+            container.setUserObject(null);
             actor.clearActions();
             actor.addAction(Actions.sequence(Actions.moveTo(tempX, tempY - GameState.GAME_HEIGHT, .5f, Interpolation.circleIn), Actions.removeActor()));
         }
@@ -522,7 +520,7 @@ public class GridEntity extends Entity {
     
     private boolean drop(Container container) {
         boolean didDrop = false;
-        Actor actor = container.getActor();
+        Actor actor = (Actor) container.getUserObject();
         if (actor != null) {
             Table table = GameState.spineStage.getRoot().findActor("gridTable");
             int index = table.getCells().indexOf(table.getCell(container), false);
@@ -531,24 +529,16 @@ public class GridEntity extends Entity {
             for (int i = column + COLUMNS * (ROWS - 1); i > index; i -= COLUMNS) {
                 Container targetContainer = (Container) table.getCells().get(i).getActor();
                 
-                if (targetContainer.getActor() == null) {
-                    
-                    temp.set(container.getPadLeft(), container.getPadRight());
-                    container.localToStageCoordinates(temp);
-                    float startX = temp.x;
-                    float startY = temp.y;
-                    
-                    targetContainer.setActor(actor);
-                    table.pack();
+                if (targetContainer.getUserObject() == null) {
+                    container.setUserObject(null);
+                    targetContainer.setUserObject(actor);
                     temp.set(targetContainer.getPadLeft(), targetContainer.getPadBottom());
                     targetContainer.localToStageCoordinates(temp);
                     float endX = temp.x;
                     float endY = temp.y;
                     
-                    actor.setPosition(startX - endX + container.getPadLeft(), startY - endY + container.getPadBottom());
-                    
                     actor.clearActions();
-                    actor.addAction(Actions.moveTo(targetContainer.getPadLeft(), targetContainer.getPadBottom(), .5f, Interpolation.bounceOut));
+                    actor.addAction(Actions.moveTo(endX, endY, .5f, Interpolation.bounceOut));
                     didDrop = true;
                     break;
                 }
